@@ -28,7 +28,12 @@ class Recipe
 
     public function __toString()
     {
-        return $this->title;
+        $ret = "";
+        $ret .= "You are calling the " . __CLASS__ . " object with the title of " . $this->getTitle() . ".\n";
+        $ret .= "It is store in " . basename(__FILE__) . " at " . __DIR__;
+        $ret .= "This display is from " . __LINE__ . " in method " . __METHOD__;
+        $ret .= "The following methods are available for object on this class: " . implode("\n", get_class_methods(__CLASS__));
+        return $ret;
     }
 
     public function setTitle($title)
@@ -83,7 +88,7 @@ class Recipe
         return ($this->yield);
     }
 
-    public function addTags($tag)
+    public function addTag($tag)
     {
         $this->tags[] = $tag;
     }

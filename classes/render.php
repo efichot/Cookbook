@@ -26,4 +26,27 @@ class Render
         $ret .= $recipe->getYield();
         return ($ret);
     }
+
+    public static function listByTitle($titles)
+    {
+        $ret = "";
+        asort($titles);
+        foreach ($titles as $key => $title)
+        {
+            $ret .= "[$key] => $title\n";
+        }
+        return $ret;
+    }
+
+    public function __toString()
+    {
+        $ret = "";
+        $ret .= "The methods available for this class: " . __CLASS__ . " are : " . implode("\n", get_class_methods(__CLASS__));
+        return $ret;
+    }
+    public static function shoppingList($ingredients)
+    {
+        ksort($ingredients);
+        return (implode(", ", array_keys($ingredients)));
+    }
 }
